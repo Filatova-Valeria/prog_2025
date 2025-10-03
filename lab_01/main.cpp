@@ -19,7 +19,7 @@ int main() {
 	razLL = sizeof(long long) * 8;
 
 	std::cout << "int занимает " << razInt << " бита, min = " << INT_MIN << ", max = " << INT_MAX << std::endl;
-	std::cout << "double занимает " << razDouble << " бита, min = " << DBL_MIN << ", max = " << DBL_MAX << std::endl;
+	std::cout << "double занимает " << razDouble << " бита, min = " << std::numeric_limits<double>::lowest() << ", max = " << DBL_MAX << std::endl;
 	std::cout << "unsignet int занимает " << razUnInt << " бита, min = " << std::numeric_limits<unsigned int>::min() << ", max = " << std::numeric_limits<unsigned int>::max() << std::endl;
 	std::cout << "long long занимает " << razLL << " бита, min = " << LLONG_MIN << ", max = " << LLONG_MAX << std::endl;
 
