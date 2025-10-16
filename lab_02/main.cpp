@@ -3,7 +3,7 @@
 #include <bitset>
 
 int main() {
-    setlocale(LC_ALL, "Russian");
+    setlocale(LC_ALL, "ru_RU");
 
     std::cout << "Пункт 1" << std::endl;
     short A;
