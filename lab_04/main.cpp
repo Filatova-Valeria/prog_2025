@@ -43,8 +43,8 @@ int main() {
 			std::cin >> matrix[i][j];
 		}
 	}
-
-	int summa[stlb];
+	
+	long long summa[stlb];
 	for (int i = 0; i < stlb; ++i) {
 		summa[i] = 0;
 	}
@@ -55,7 +55,7 @@ int main() {
 		}
 	}
 
-	int max_summa = INT_MIN;
+	int max_summa = LLONG_MIN;
 	int nom_stlb = -1;
 
 	for (int i = 0; i < stlb; ++i) {
