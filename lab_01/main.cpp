@@ -1,5 +1,6 @@
 #include <iostream>
 #include <limits>
+#include <clocale>
 
 int main() {
 	setlocale(LC_ALL, "Russian");
