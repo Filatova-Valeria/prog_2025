@@ -5,10 +5,10 @@
 #include <iomanip>
 
 struct energy_drink {
-    std::string name;      // название напитка
+    std::string name;      // название
     std::string flavor;    // вкус
-    double rating;          // оценка от 0.0 до 5.0
-    energy_drink* similar;   // указатель на похожий напиток (название)
+    double rating;          // оценка
+    energy_drink* similar;   // указатель на похожий напиток
     double price;          // цена
 };
 
@@ -79,7 +79,7 @@ void show_unique_flavors(std::vector<energy_drink*>& catalog) {
 
     for (int i = 0; i < catalog.size(); i++) {
         if (catalog[i]->similar == nullptr) {
-            std::cout << "• " << catalog[i]->name << " (" << catalog[i]->flavor << ")" << std::endl;
+            std::cout << catalog[i]->name << " (" << catalog[i]->flavor << ")" << std::endl;
             found_unique = true;
         }
     }
@@ -110,20 +110,17 @@ void show_by_flavors(std::vector<energy_drink*>& catalog) {
             std::cout << "\nВкус: " << flavor_to_print << std::endl;
             std::cout << "Напитки:" << std::endl;
 
-            int item_number = 1;
-
-            // Ищем все напитки с таким вкусом
+            // Все напитки с таким вкусом
             for (int j = 0; j < total_drinks; j++) {
                 if (catalog[j]->flavor == flavor_to_print) {
-                    std::cout << "  " << item_number << ". " << catalog[j]->name;
+                    std::cout << "  " << catalog[j]->name;
 
-                    // Обрабатываем переходы к похожим напиткам
+                    // Переходы к похожим напиткам
                     energy_drink* similar = catalog[j]->similar;
                     if (similar != nullptr) {
                         std::cout << " похож на " << similar->name;
                     }
                     std::cout << std::endl;
-                    item_number++;
                 }
             }
         }
@@ -172,7 +169,7 @@ void add_new_drink(std::vector<energy_drink*>& catalog) {
     }
 
     catalog.push_back(new_drink);
-    std::cout << "Напиток добавлен в каталог!" << std::endl;
+    std::cout << "Напиток добавлен в каталог." << std::endl;
 }
 
 std::vector<energy_drink*> make_catalog() {
@@ -207,7 +204,7 @@ std::vector<energy_drink*> make_catalog() {
 void clear_memory(std::vector<energy_drink*>& catalog) {
     for (int i = 0; i < catalog.size(); i++) {
         delete catalog[i];
-        catalog[i] = nullptr;  // дополнительная безопасность
+        catalog[i] = nullptr;
     }
     catalog.clear();
 }
