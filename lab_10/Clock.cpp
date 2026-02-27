@@ -199,27 +199,42 @@ Clock Clock::operator+(const Clock& other) {
         temp.hours_ = other.hours_;
         temp.minutes_ = other.minutes_;
     }
+
     temp.day_ += 7;
     temp.hours_ += 1;
     temp.norm_date();
     temp.norm_time();
 
-    temp.tasks_ = tasks_;
+    std::vector<std::string> un_tasks;
 
-    for (int i = 0; i < other.tasks_.size(); i++) {
-        std::string now_task = other.tasks_[i];
+    for (int i = 0; i < tasks_.size(); i++) {
+        std::string cur = tasks_[i];
         bool found = false;
-        for (int j = 0; j < temp.tasks_.size(); j++) {
-            if (temp.tasks_[j] == now_task) {
+        for (int j = 0; j < un_tasks.size(); j++) {
+            if (un_tasks[j] == cur) {
                 found = true;
                 break;
             }
         }
         if (!found) {
-            temp.tasks_.push_back(now_task);
+            un_tasks.push_back(cur);
         }
     }
 
+    for (int i = 0; i < other.tasks_.size(); i++) {
+        std::string now_task = other.tasks_[i];
+        bool found = false;
+        for (int j = 0; j < un_tasks.size(); j++) {
+            if (un_tasks[j] == now_task) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            un_tasks.push_back(now_task);
+        }
+    }
+    temp.tasks_ = un_tasks;
     return temp;
 }
 
